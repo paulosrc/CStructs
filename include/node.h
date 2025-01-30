@@ -49,11 +49,11 @@ typedef struct GraphNode
 } GraphNode;
 
 
-Node*       NodeInit(Pointer newData);         // Inicializa Nó de lista simplesmente encadeada
+Node* NodeInit(Pointer newData);         // Inicializa Nó de lista simplesmente encadeada
 DoubleNode* DoubleNodeInit(Pointer newData);   // Inicializa Nó de lista duplamente encadeada
 TripleNode* TripleNodeInit(Pointer newData);   // Inicializa Nó de árvore ternária
-TreeNode*   TreeNodeInit(Pointer newData);     // Inicializa Nó de árvore binária
-NTreeNode*  NTreeNodeInit(Pointer newData);    // Inicializa Nó de árvore "N"ária
-GraphNode*  GraphNodeInit(Pointer newData);    // Inicializa Nó de Grafo
+TreeNode* TreeNodeInit(Pointer newData);     // Inicializa Nó de árvore binária
+NTreeNode* NTreeNodeInit(Pointer newData);    // Inicializa Nó de árvore "N"ária
+GraphNode* GraphNodeInit(Pointer newData);    // Inicializa Nó de Grafo
 
 #endif

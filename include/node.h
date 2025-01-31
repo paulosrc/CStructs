@@ -5,55 +5,22 @@
 
 #define MAX_KEYS 100
 
-typedef struct node
+typedef enum
 {
-    Pointer data;                           // Ponteiro genérico para dados
-    struct node *next;                      // Ponteiro para o próximo nó
+    SIMPLY_LINKED = 1,  // Nó que se liga a apenas um nó diferente
+    DOUBLY_LINKED = 2,  // Nó que se liga a até dois nós diferentes
+    TRIPLY_LINKED = 3,  // Nó que se liga a até três nós diferentes
+    TYPE_COUNT          // Contagem dos tipos de nós
+} NodeType;
+
+typedef struct Node
+{
+    Pointer data;       // Ponteiro para os dados armazenados
+    void** links;       // Array de ponteiros para conexões
+    int linkCount;      // Número de conexões ativas
+    NodeType type;      // Número de conexões possíveis
 } Node;
 
-typedef struct doublenode
-{
-    Pointer data;                           // Ponteiro genérico para dados
-    struct doublenode *prev;                // Ponteiro para o próximo nó                      
-    struct doublenode *next;                // Ponteiro para o nó anterior
-} DoubleNode;
-
-typedef struct triplenode
-{
-    Pointer data;                           // Ponteiro genérico para dados
-    struct triplenode *left;                // Ponteiro para o nó da esquerda
-    struct triplenode *middle;              // Ponteiro para o nó do meio
-    struct triplenode *right;               // Ponteiro para o nó da direita
-} TripleNode;
-
-typedef struct TreeNode 
-{
-    Pointer data;                           // Ponteiro genérico para dados
-    struct TreeNode* left;                  // Ponteiro para a subárvore da esquerda
-    struct TreeNode* right;                 // Ponteiro para a subárvore da direita
-} TreeNode;
-
-
-typedef struct NTreeNode 
-{
-    Pointer data;                           // Ponteiro genérico para dados
-    struct NTreeNode* firstChild;           // Ponteiro para a primeira subárvore
-    struct NTreeNode* nextSibling;          // Ponteiro para as subárvores seguintes
-} NTreeNode;
-
-typedef struct GraphNode 
-{
-    Pointer data;                           // Ponteiro genérico para dados
-    struct GraphNode** adjList;             // Lista de adjacência do grafo
-    int adjCount;                           // Contagem para elementos adjacentes
-} GraphNode;
-
-
-Node* NodeInit(Pointer newData);         // Inicializa Nó de lista simplesmente encadeada
-DoubleNode* DoubleNodeInit(Pointer newData);   // Inicializa Nó de lista duplamente encadeada
-TripleNode* TripleNodeInit(Pointer newData);   // Inicializa Nó de árvore ternária
-TreeNode* TreeNodeInit(Pointer newData);     // Inicializa Nó de árvore binária
-NTreeNode* NTreeNodeInit(Pointer newData);    // Inicializa Nó de árvore "N"ária
-GraphNode* GraphNodeInit(Pointer newData);    // Inicializa Nó de Grafo
+Node* NodeInit(size_t structSize, Pointer newData);
 
 #endif

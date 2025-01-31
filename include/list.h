@@ -16,5 +16,6 @@ typedef struct
 } List;
 
 List* ListInit(ListType Ltype, NodeType Ntype);
+void ListFree(List* list);
 
 #endif

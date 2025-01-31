@@ -21,3 +21,26 @@ List* ListInit(ListType Ltype, NodeType Ntype)
     }
     return newList;
 }
+
+void ListFree(List* list)
+{
+    if (list == NULL) return;
+
+    Node* current = list->head;
+    Node* next;
+
+    while (current != NULL)
+    {
+        next = current->links[0];         
+
+        if (current->data != NULL)
+            free(current->data);
+
+        free(current->links);           // Liberar os links do nó
+        free(current);                  // Liberar o nó em si
+
+        current = next;
+    }
+
+    free(list);                         // Libera a memória de Lista
+}

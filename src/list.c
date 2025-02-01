@@ -19,6 +19,7 @@ List* ListInit(ListType Ltype, NodeType Ntype)
         if (Ltype == CIRCULAR_LIST) 
             newList->head->links[0] = newList->head; // Faz a circularidade
     }
+    
     return newList;
 }
 
@@ -31,9 +32,9 @@ void FreeList(List* list)
 
         while (current != NULL)
         {
-            next = (Node*)current->links[0]; // Ou outro método de acessar o próximo nó, dependendo da estrutura
-            FreeNode(current); // Libera o nó atual
-            current = next; // Move para o próximo nó
+            next = (Node*)current->links[0];    // Ou outro método de acessar o próximo nó, dependendo da estrutura
+            FreeNode(current);                  // Libera o nó atual
+            current = next;                     // Move para o próximo nó
         }
 
         free(list); // Libera a estrutura da lista

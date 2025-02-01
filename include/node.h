@@ -22,5 +22,6 @@ typedef struct Node
 } Node;
 
 Node* NodeInit(size_t structSize, Pointer newData);
+void FreeNode(Node* node);
 
 #endif

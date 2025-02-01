@@ -22,25 +22,20 @@ List* ListInit(ListType Ltype, NodeType Ntype)
     return newList;
 }
 
-void ListFree(List* list)
+void FreeList(List* list)
 {
-    if (list == NULL) return;
-
-    Node* current = list->head;
-    Node* next;
-
-    while (current != NULL)
+    if (list != NULL)
     {
-        next = current->links[0];         
+        Node* current = list->head;
+        Node* next;
 
-        if (current->data != NULL)
-            free(current->data);
+        while (current != NULL)
+        {
+            next = (Node*)current->links[0]; // Ou outro método de acessar o próximo nó, dependendo da estrutura
+            FreeNode(current); // Libera o nó atual
+            current = next; // Move para o próximo nó
+        }
 
-        free(current->links);           // Liberar os links do nó
-        free(current);                  // Liberar o nó em si
-
-        current = next;
+        free(list); // Libera a estrutura da lista
     }
-
-    free(list);                         // Libera a memória de Lista
 }

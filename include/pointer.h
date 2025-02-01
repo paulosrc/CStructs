@@ -20,5 +20,6 @@ typedef enum
 } DataType;
 
 Pointer DataToPointer(DataType type, ...);
+void FreePointer(Pointer data);
 
 #endif

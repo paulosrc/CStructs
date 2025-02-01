@@ -53,3 +53,11 @@ Pointer DataToPointer(DataType type, ...)
     va_end(args);
     return ptr;
 }
+
+void FreePointer(Pointer data)
+{
+    if (data != NULL)
+    {
+        free(data); // Libera a memória ocupada pelos dados
+    }
+}

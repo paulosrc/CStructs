@@ -16,7 +16,7 @@ typedef enum
 typedef struct Node
 {
     Pointer data;       // Ponteiro para os dados armazenados
-    void** links;       // Array de ponteiros para conexões
+    Pointer* links;     // Array de ponteiros para conexões
     int linkCount;      // Número de conexões ativas
     NodeType type;      // Número de conexões possíveis
 } Node;

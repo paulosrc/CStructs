@@ -11,8 +11,8 @@ List* ListInit(ListType Ltype, NodeType Ntype)
     // Inicializa os nós conforme o tipo
     if (Ntype > 0) 
     {
-        newList->head = (Node*)NodeInit(sizeof(Node), NULL); // Aloca o primeiro nó
-        newList->head->links = (void**)malloc(Ntype * sizeof(void*)); // Aloca memória para links
+        newList->head = (Node*)NodeInit(sizeof(Node), NULL);            // Aloca o primeiro nó
+        newList->head->links = (void**)malloc(Ntype * sizeof(void*));   // Aloca memória para links
         newList->head->linkCount = 0;
         newList->head->type = Ntype;
 

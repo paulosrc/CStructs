@@ -10,9 +10,9 @@ Node* NodeInit(size_t structSize, Pointer newData)
     newNode->data = newData; // Acessa diretamente o campo 'data' do nó
 
     // Inicializa os links
-    newNode->links = (void**)malloc(sizeof(void*) * TYPE_COUNT); // Aloca memória para os links
+    newNode->links = (void**)malloc(sizeof(void*) * TYPE_COUNT);
     newNode->linkCount = 0;
-    newNode->type = (NodeType)(structSize / sizeof(Node)); // Ajuste conforme a lógica desejada
+    newNode->type = (NodeType)(structSize / sizeof(Node));
 
     return newNode;
 }

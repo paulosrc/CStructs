@@ -5,7 +5,7 @@
 Node* NodeInit(NodeType type, Pointer newData)
 {
     Node* newNode = (Node*)malloc(sizeof(Node));
-    assert(newNode != NULL);
+    assert(newNode != NULL);    // Erro de alocação de memória
 
     newNode->data = newData;
 

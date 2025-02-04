@@ -45,10 +45,10 @@ void ListAddNode(List *L, Node *newNode)
     }
 }
 
-void ListInsertNode(List *L, Node *newNode, int index)
+void ListInsertNode(List *L, Node *newNode, size_t index)
 {
     Node* aux = L->head;
-    for (int i = 0; i < index; i++)
+    for (size_t i = 0; i < index; i++)
     {
         if (aux->next == L->tail)
         {
@@ -75,13 +75,13 @@ void ListInsertNode(List *L, Node *newNode, int index)
     }
 }
 
-void ListRemoveNode(List *L, int index)
+void ListRemoveNode(List *L, size_t index)
 {
     if (L == NULL || L->head->next == L->tail) return; // Lista vazia, nada a remover
 
     Node* aux = L->head;
     
-    for (int i = 0; i < index && aux->next != L->tail; i++)
+    for (size_t i = 0; i < index && aux->next != L->tail; i++)
     {
         aux = aux->next;
     }
@@ -101,7 +101,21 @@ void ListRemoveNode(List *L, int index)
     }
 }
 
-Node* ListFetchNode(List *L, int index)
+Node* ListFetchNode(List *L, size_t index)
 {
-    
+    if (L == NULL || L->head->next == L->tail) return L->head;
+
+    Node *aux = L->head;
+
+    for (size_t i = 0; i < index; i++)
+    {
+        if (aux->next == NULL || aux->next == L->tail)
+        {
+            return aux;
+        }
+
+        aux = aux->next;
+    }
+
+    return aux;    
 }

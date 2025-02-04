@@ -21,7 +21,7 @@ typedef struct Node
     NodeType type;      // Número de conexões possíveis
 } Node;
 
-Node* NodeInit(size_t structSize, Pointer newData);
-void FreeNode(Node* node);
+Node* NodeInit(NodeType type, Pointer newData);
+void NodeFree(Node* node);
 
 #endif

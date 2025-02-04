@@ -13,9 +13,8 @@ typedef struct
 {
     Node *head;
     Node *tail;
+    ListType type;
 } List;
 
-List* ListInit(ListType Ltype, NodeType Ntype);
-void FreeList(List* list);
 
 #endif

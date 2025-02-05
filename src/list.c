@@ -119,3 +119,18 @@ Node* ListFetchNode(List *L, size_t index)
 
     return aux;    
 }
+
+void ListFree(List *L)
+{
+    if (L == NULL) return;
+
+    Node *current = L->head;
+    while (current != NULL)
+    {
+        Node *next = current->next; // Salva o próximo nó
+        NodeFree(current);          // Libera o nó atual
+        current = next;             // Avança para o próximo nó
+    }
+
+    free(L); // Libera a estrutura da lista
+}

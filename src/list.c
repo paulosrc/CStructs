@@ -75,7 +75,7 @@ void ListInsertNode(List *L, Node *newNode, size_t index)
     }
 }
 
-void ListRemoveNode(List *L, size_t index)
+Node* ListRemoveNode(List *L, size_t index)
 {
     if (L == NULL || L->head->next == L->tail) return; // Lista vazia, nada a remover
 
@@ -98,6 +98,7 @@ void ListRemoveNode(List *L, size_t index)
         }
 
         NodeFree(toRemove); // Libera o nó
+        return aux;
     }
 }
 

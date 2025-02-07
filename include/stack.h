@@ -9,6 +9,7 @@ typedef List Stack; // Pilha é uma lista
 #define StackPush(L, N)         ListAddNode(L, N)
 #define StackPop(L)             ListRemoveNode(L, ListSize(L) - 1)
 #define StackTop(L)             ListBack(L)
+#define StackBottom(L)          ListFront(L)
 #define StackNext(N)            ListNext(N)
 #define StackPrev(N)            ListPrev(N)
 #define StackData(N)            ListData(N)

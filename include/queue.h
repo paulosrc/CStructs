@@ -17,5 +17,10 @@ typedef List Queue; // Fila é uma lista
 #define QueueHead(L)            ListHead(L)
 #define QueueTail(L)            ListTail(L)
 #define QueueEmpty(L)           ListEmpty(L)
+#define QueueFree(L)            ListFree(L)
+#define QueueSize(L)            ListSize(L)
+
+#define LINEAR_QUEUE LINEAR_LIST
+#define CIRCULAR_QUEUE CIRCULAR_LIST
 
 #endif

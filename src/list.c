@@ -77,7 +77,7 @@ void ListInsertNode(List *L, Node *newNode, size_t index)
 
 Node* ListRemoveNode(List *L, size_t index)
 {
-    if (L == NULL || L->head->next == L->tail) return; // Lista vazia, nada a remover
+    if (L == NULL || L->head->next == L->tail) return NULL; // Lista vazia, nada a remover
 
     Node* aux = L->head;
     
@@ -94,12 +94,15 @@ Node* ListRemoveNode(List *L, size_t index)
 
         if (L->head->type == DOUBLY_LINKED && toRemove->next != NULL)
         {
-            toRemove = aux;
+            ((Node*)toRemove->next)->prev = aux;
         }
 
-        NodeFree(toRemove); // Libera o nó
-        return aux;
+        toRemove->next = NULL;
+        toRemove->prev = NULL;
+        return toRemove;
     }
+
+    return NULL;
 }
 
 Node* ListFetchNode(List *L, size_t index)

@@ -19,11 +19,12 @@ void imprimir_fila(Queue *fila)
 int main()
 {
     Queue *fila = QueueInit(LINEAR_QUEUE, SIMPLY_LINKED);
-    QueueEnqueue(fila, NodeInit(DataToPointer(TYPE_INT, 1)));
-    QueueEnqueue(fila, NodeInit(DataToPointer(TYPE_INT, 2)));
-    QueueEnqueue(fila, NodeInit(DataToPointer(TYPE_INT, 3)));
-    QueueEnqueue(fila, NodeInit(DataToPointer(TYPE_INT, 4)));
-    QueueEnqueue(fila, NodeInit(DataToPointer(TYPE_INT, 5));
+    
+    QueueEnqueue(fila, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 1)));
+    QueueEnqueue(fila, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 2)));
+    QueueEnqueue(fila, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 3)));
+    QueueEnqueue(fila, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 4)));
+    QueueEnqueue(fila, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 5)));
     
     imprimir_fila(fila);
 
@@ -34,6 +35,5 @@ int main()
     imprimir_fila(fila);
 
     QueueFree(fila);
-
     return 0;
 }

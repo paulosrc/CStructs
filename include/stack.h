@@ -18,4 +18,7 @@ typedef List Stack; // Pilha é uma lista
 #define StackTail(L)            ListTail(L)
 #define StackEmpty(L)           ListEmpty(L)
 
+#define LINEAR_STACK    LINEAR_LIST
+#define CIRCULAR_STACK  CIRCULAR_LIST
+
 #endif

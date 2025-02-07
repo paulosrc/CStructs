@@ -103,7 +103,7 @@ void ListRemoveNode(List *L, size_t index)
 
 Node* ListFetchNode(List *L, size_t index)
 {
-    if (L == NULL || L->head->next == L->tail) return L->head;
+    if (L == NULL || L->head->next == L->tail) return L->head;  // Lista vazia, retorna head
 
     Node *aux = L->head;
 
@@ -122,10 +122,10 @@ Node* ListFetchNode(List *L, size_t index)
 
 void ListFree(List *L)
 {
-    if (L == NULL) return;
+    if (L == NULL) return;      // Lista vazia, nada a liberar
 
-    Node *current = L->head;
-    while (current != NULL)
+    Node *current = L->head;    // Começa pelo primeiro nó
+    while (current != NULL)     
     {
         Node *next = current->next; // Salva o próximo nó
         NodeFree(current);          // Libera o nó atual

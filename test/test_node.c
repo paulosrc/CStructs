@@ -26,6 +26,7 @@ int main()
     Node *node1 = NodeInit(SIMPLY_LINKED, NULL);
     Node *node2 = NodeInit(SIMPLY_LINKED, NULL);
     Node *node3 = NodeInit(SIMPLY_LINKED, NULL);
+    Node *node4 = NodeInit(SIMPLY_LINKED, NULL);
 
     // Realizando as ligações
     node1->links[0] = node2;
@@ -36,15 +37,20 @@ int main()
     node2->linkCount++;
     node2->data = DataToPointer(TYPE_CHAR, 'B');
 
-    node3->links[0] = node1;
+    node3->links[0] = node4;
     node3->linkCount++;
     node3->data = DataToPointer(TYPE_CHAR, 'C');
 
-    imprimir_fila(node1); // saída: A -> B -> C
+    node4->links[0] = node1;
+    node4->linkCount++;
+    node4->data = DataToPointer(TYPE_CHAR, 'D');
+
+    imprimir_fila(node1); // saída: A -> B -> C -> D
 
     NodeFree(node1);
     NodeFree(node2);
     NodeFree(node3);
+    NodeFree(node4);
 
     return 0;
 }

@@ -26,7 +26,7 @@ void NodeFree(Node* node)
     if (node->links != NULL)
     {
         for (int i = 0; i < node->linkCount; i++)
-            FreeNode((Node*)node->links[i]);        // Chama FreeNode recursivamente se necessário
+            NodeFree((Node*)node->links[i]);        // Chama NodeFree recursivamente se necessário
         free(node->links);                          // Libera o array de links
     }
     

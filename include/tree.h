@@ -23,7 +23,8 @@ typedef struct tree
 } Tree;
 
 Tree* TreeInit(TreeType Ttype, NodeType Ntype, DataType Dtype); // Inicializa árvore vazia
-void TreeAddNode(Tree *T, Node *newNode);                       // Adiciona nó à árvore
-
+void TreeAddNode(Tree *T, Node *newNode, DataType type);        // Adiciona nó à árvore
+void TreeFreeNodes(Node *root, DataType type);                  // Libera memória alocada para nós da árvore
+void TreeFree(Tree *T);                                         // Libera memória alocada para a árvore
 
 #endif

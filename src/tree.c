@@ -51,3 +51,24 @@ void TreeAddNode(Tree *T, Node *newNode, DataType type)
     }
 }
 
+void TreeFreeNodes(Node *root, DataType type)
+{
+    if (root == NULL) return;
+
+    // Primeiro libera os filhos (recursivamente)
+    TreeFreeNodes(root->left, type);
+    TreeFreeNodes(root->right, type);
+
+    // Libera os dados armazenados no nó
+    FreePointer(root->data);
+
+    // Libera o próprio nó
+    NodeFree(root);
+}
+
+void TreeFree(Tree *T)
+{
+    if (T == NULL) return;
+    TreeFreeNodes(T->root, TreeType(T)); // Libera os nós da árvore
+    free(T); // Libera a árvore
+}

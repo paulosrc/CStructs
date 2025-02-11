@@ -1,6 +1,6 @@
 #include "../include/queue.h"
 
-void imprimir_fila(Queue *fila)
+void print_queue(Queue *fila)
 {
     Node *aux = QueueFront(fila);
     while (aux != NULL)
@@ -26,13 +26,13 @@ int main()
     QueueEnqueue(fila, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 4)));
     QueueEnqueue(fila, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 5)));
     
-    imprimir_fila(fila);
+    print_queue(fila);
 
     Node *no = QueueDequeue(fila);
     printf("Elemento removido: %d\n", no->data);
     free(no);
 
-    imprimir_fila(fila);
+    print_queue(fila);
 
     QueueFree(fila);
     return 0;

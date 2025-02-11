@@ -1,6 +1,6 @@
 #include "../include/stack.h"
 
-void imprimir_pilha(Stack *pilha)
+void print_stack(Stack *pilha)
 {
     Node *aux = StackTop(pilha);
     while (aux != NULL)
@@ -26,13 +26,13 @@ int main()
     StackPush(pilha, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 4)));
     StackPush(pilha, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 5)));
 
-    imprimir_pilha(pilha); // saída: 1 -> 2 -> 3 -> 4 -> 5
+    print_stack(pilha); // saída: 1 -> 2 -> 3 -> 4 -> 5
 
     StackPop(pilha);
 
     printf("Elemento desempilhado.\n");
 
-    imprimir_pilha(pilha); // saída: 1 -> 2 -> 3 -> 4
+    print_stack(pilha); // saída: 1 -> 2 -> 3 -> 4
 
     QueueFree(pilha);
     return 0;

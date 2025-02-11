@@ -6,9 +6,8 @@
 #define left  links[0]
 #define right links[1]
 
-#define TreeRoot(T)     T->root
-#define TreeType(T)     T->type
-
+#define TreeRoot(T) T->root
+#define TreeType(T) T->type
 typedef enum
 {
     BINARY_TREE,        // Árvore de busca binária
@@ -23,6 +22,8 @@ typedef struct tree
     TreeType type;
 } Tree;
 
-Tree* TreeInit(NodeType type);
-void TreeInsert(Tree *T, Node *node);
+Tree* TreeInit(TreeType Ttype, NodeType Ntype, DataType Dtype); // Inicializa árvore vazia
+void TreeAddNode(Tree *T, Node *newNode);                       // Adiciona nó à árvore
+
+
 #endif

@@ -43,7 +43,7 @@ Pointer DataToPointer(DataType type, ...)
         }
         case TYPE_STRING: 
         {
-            const char* str = va_arg(args, const char*);
+            const String str = va_arg(args, const String);
             ptr = strdup(str); // Aloca e copia a string
             if (!ptr) return NULL;
             break;
@@ -59,5 +59,24 @@ void FreePointer(Pointer data)
     if (data != NULL)
     {
         free(data); // Libera a memória ocupada pelos dados
+    }
+}
+
+int CompareData(Pointer data1, Pointer data2, DataType type)
+{
+    switch (type)
+    {
+    case TYPE_INT:
+        return *(int*)data1 - *(int*)data2;
+    case TYPE_FLOAT:
+        return *(float*)data1 - *(float*)data2;
+    case TYPE_DOUBLE:
+        return *(double*)data1 - *(double*)data2;
+    case TYPE_CHAR:
+        return *(char*)data1 - *(char*)data2;
+    case TYPE_STRING:
+        return strcmp((String)data1, (String)data2);
+    default:
+        break;
     }
 }

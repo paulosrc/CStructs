@@ -1,6 +1,6 @@
 #include "../include/list.h"
 
-void imprimir_lista(List *list)
+void print_list(List *list)
 {
     Node *aux = list->head;
     while (aux != NULL)
@@ -27,7 +27,7 @@ int main()
     ListAddNode(list, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_CHAR, 'C')));
     ListAddNode(list, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_CHAR, 'D')));
 
-    imprimir_lista(list); // saída: A -> B -> C -> D
+    print_list(list); // saída: A -> B -> C -> D
 
     ListFree(list);
 

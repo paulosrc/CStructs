@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../include/node.h"
 
-void imprimir_fila(Node *head)
+void print_queue(Node *head)
 {
     Node *aux = head;
     while (aux != NULL)
@@ -45,7 +45,7 @@ int main()
     node4->linkCount++;
     node4->data = DataToPointer(TYPE_CHAR, 'D');
 
-    imprimir_fila(node1); // saída: A -> B -> C -> D
+    print_queue(node1); // saída: A -> B -> C -> D
 
     NodeFree(node1);
     NodeFree(node2);

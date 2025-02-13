@@ -3,8 +3,6 @@
 
 #include "pointer.h"
 
-#define MAX_KEYS 100
-
 typedef enum
 {
     SIMPLY_LINKED = 1,  // Nó que se liga a apenas um nó diferente
@@ -21,7 +19,7 @@ typedef struct Node
     NodeType type;      // Número de conexões possíveis
 } Node;
 
-Node* NodeInit(NodeType type, Pointer newData);
-void NodeFree(Node* node);
+Node* nodeInit(NodeType type, Pointer newData);
+void nodeFree(Node* node);
 
 #endif

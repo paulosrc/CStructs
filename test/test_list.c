@@ -1,6 +1,6 @@
 #include "../include/list.h"
 
-void print_list(List *list)
+void printList(List *list)
 {
     Node *aux = list->head;
     while (aux != NULL)
@@ -20,16 +20,16 @@ void print_list(List *list)
 
 int main()
 {
-    List *list = ListInit(CIRCULAR_LIST, SIMPLY_LINKED);
+    List *list = listInit(CIRCULAR_LIST, SIMPLY_LINKED);
     
-    ListAddNode(list, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_CHAR, 'A')));
-    ListAddNode(list, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_CHAR, 'B')));
-    ListAddNode(list, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_CHAR, 'C')));
-    ListAddNode(list, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_CHAR, 'D')));
+    listAddNode(list, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_CHAR, 'A')));
+    listAddNode(list, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_CHAR, 'B')));
+    listAddNode(list, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_CHAR, 'C')));
+    listAddNode(list, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_CHAR, 'D')));
 
-    print_list(list); // saída: A -> B -> C -> D
+    printList(list); // saída: A -> B -> C -> D
 
-    ListFree(list);
+    listFree(list);
 
     return 0;
 }

@@ -1,138 +1,138 @@
 #include "list.h"
 
-List* ListInit(ListType Ltype, NodeType Ntype)
+List* listInit(ListType Ltype, NodeType Ntype)
 {
     List *newList = (List*)malloc(sizeof(List));    // Aloca memória para Lista
     assert(newList != NULL);                        // Erro de alocação de memória
 
     newList->type = Ltype;                          // Define o tipo da Lista
-    newList->head = NodeInit(Ntype, NULL);          // Inicializa o Nó head
-    newList->tail = NodeInit(Ntype, NULL);          // Inicializa o Nó tail
+    newList->head = nodeInit(Ntype, NULL);          // Inicializa o Nó head
+    newList->tail = nodeInit(Ntype, NULL);          // Inicializa o Nó tail
 
     // Define conexões para listas encadeadas
-    newList->head->next = newList->tail;  
+    newList->head->NEXT = newList->tail;  
 
     if (Ntype == DOUBLY_LINKED)
-        newList->tail->prev = newList->head;
+        newList->tail->PREV = newList->head;
 
     // Configuração para lista circular
     if (Ltype == CIRCULAR_LIST)
     {
-        newList->tail->next = newList->head;     
+        newList->tail->NEXT = newList->head;     
 
         if (Ntype == DOUBLY_LINKED)
-            newList->head->prev = newList->tail; 
+            newList->head->PREV = newList->tail; 
     }
 
     return newList;
 }
 
-void ListAddNode(List *L, Node *newNode)
+void listAddNode(List *L, Node *newNode)
 {
     Node *aux = L->head;
-    while (aux->next != L->tail)
+    while (aux->NEXT != L->tail)
     {
-        aux = aux->next;        
+        aux = aux->NEXT;        
     }
 
-    aux->next = newNode;
-    newNode->next = L->tail;
+    aux->NEXT = newNode;
+    newNode->NEXT = L->tail;
     
     if (L->head->type == DOUBLY_LINKED)
     {
-        newNode->prev = aux;
-        L->tail->prev = newNode;
+        newNode->PREV = aux;
+        L->tail->PREV = newNode;
     }
 }
 
-void ListInsertNode(List *L, Node *newNode, size_t index)
+void listInsertNode(List *L, Node *newNode, size_t index)
 {
     Node* aux = L->head;
     for (size_t i = 0; i < index; i++)
     {
-        if (aux->next == L->tail)
+        if (aux->NEXT == L->tail)
         {
-            aux->next = newNode;
-            newNode->next = L->tail;
+            aux->NEXT = newNode;
+            newNode->NEXT = L->tail;
             if (L->head->type == DOUBLY_LINKED)
             {
-                L->tail->prev = newNode;
-                newNode->prev = aux;
+                L->tail->PREV = newNode;
+                newNode->PREV = aux;
             }
             return;
         }
-        aux = aux->next;
+        aux = aux->NEXT;
     }
 
-    Node* auxn = aux->next;
-    aux->next = newNode;
-    newNode->next = auxn;
+    Node* auxn = aux->NEXT;
+    aux->NEXT = newNode;
+    newNode->NEXT = auxn;
 
     if (L->head->type == DOUBLY_LINKED)
     {
-        auxn->prev = newNode;
-        newNode->prev = aux;
+        auxn->PREV = newNode;
+        newNode->PREV = aux;
     }
 }
 
-Node* ListRemoveNode(List *L, size_t index)
+Node* listRemoveNode(List *L, size_t index)
 {
-    if (L == NULL || L->head->next == L->tail) return NULL; // Lista vazia, nada a remover
+    if (L == NULL || L->head->NEXT == L->tail) return NULL; // Lista vazia, nada a remover
 
     Node* aux = L->head;
     
-    for (size_t i = 0; i < index && aux->next != L->tail; i++)
+    for (size_t i = 0; i < index && aux->NEXT != L->tail; i++)
     {
-        aux = aux->next;
+        aux = aux->NEXT;
     }
 
-    Node *toRemove = aux->next;
+    Node *toRemove = aux->NEXT;
 
     if (toRemove != L->tail) 
     {
-        aux->next = toRemove->next;
+        aux->NEXT = toRemove->NEXT;
 
-        if (L->head->type == DOUBLY_LINKED && toRemove->next != NULL)
+        if (L->head->type == DOUBLY_LINKED && toRemove->NEXT != NULL)
         {
-            ((Node*)toRemove->next)->prev = aux;
+            ((Node*)toRemove->NEXT)->PREV = aux;
         }
 
-        toRemove->next = NULL;
-        toRemove->prev = NULL;
+        toRemove->NEXT = NULL;
+        toRemove->PREV = NULL;
         return toRemove;
     }
 
     return NULL;
 }
 
-Node* ListFetchNode(List *L, size_t index)
+Node* listFetchNode(List *L, size_t index)
 {
-    if (L == NULL || L->head->next == L->tail) return L->head;  // Lista vazia, retorna head
+    if (L == NULL || L->head->NEXT == L->tail) return L->head;  // Lista vazia, retorna head
 
     Node *aux = L->head;
 
     for (size_t i = 0; i < index; i++)
     {
-        if (aux->next == NULL || aux->next == L->tail)
+        if (aux->NEXT == NULL || aux->NEXT == L->tail)
         {
             return aux;
         }
 
-        aux = aux->next;
+        aux = aux->NEXT;
     }
 
     return aux;    
 }
 
-void ListFree(List *L)
+void listFree(List *L)
 {
     if (L == NULL) return;      // Lista vazia, nada a liberar
 
     Node *current = L->head;    // Começa pelo primeiro nó
     while (current != NULL)     
     {
-        Node *next = current->next; // Salva o próximo nó
-        NodeFree(current);          // Libera o nó atual
+        Node *next = current->NEXT; // Salva o próximo nó
+        nodeFree(current);          // Libera o nó atual
         current = next;             // Avança para o próximo nó
     }
 

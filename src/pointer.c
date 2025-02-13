@@ -1,6 +1,6 @@
 #include "pointer.h"
 
-Pointer DataToPointer(DataType type, ...)
+Pointer dataToPointer(DataType type, ...)
 {
     va_list args;
     va_start(args, type);
@@ -54,7 +54,7 @@ Pointer DataToPointer(DataType type, ...)
     return ptr;
 }
 
-void FreePointer(Pointer data)
+void freePointer(Pointer data)
 {
     if (data != NULL)
     {
@@ -62,7 +62,7 @@ void FreePointer(Pointer data)
     }
 }
 
-int CompareData(Pointer data1, Pointer data2, DataType type)
+int compareData(Pointer data1, Pointer data2, DataType type)
 {
     switch (type)
     {

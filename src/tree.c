@@ -1,11 +1,11 @@
 #include "../include/tree.h"
 
-Tree* TreeInit(TreeType Ttype, NodeType Ntype, DataType Dtype)
+Tree* treeInit(TreeType Ttype, NodeType Ntype, DataType Dtype)
 {
     Tree *T = (Tree*)malloc(sizeof(Tree));
     assert(T != NULL); // Erro de alocação de memória
     
-    T->root = NodeInit(Ntype, NULL);
+    T->root = nodeInit(Ntype, NULL);
     assert(T->root != NULL); // Erro de alocação de memória
 
     T->type = Ttype;
@@ -13,7 +13,7 @@ Tree* TreeInit(TreeType Ttype, NodeType Ntype, DataType Dtype)
     return T;
 }
 
-void TreeAddNode(Tree *T, Node *newNode, DataType type)
+void treeAddNode(Tree *T, Node *newNode, DataType type)
 {
     if (T->root == NULL)
     {
@@ -25,23 +25,23 @@ void TreeAddNode(Tree *T, Node *newNode, DataType type)
     
     while (1)
     {
-        if (CompareData(newNode->data, current->data, type) < 0)
+        if (compareData(newNode->data, current->data, type) < 0)
         {
-            if (current->left == NULL)
+            if (current->LEFT == NULL)
             {
-                current->left = newNode;
+                current->LEFT = newNode;
                 break;
             }
-            current = current->left;
+            current = current->LEFT;
         }
-        else if (CompareData(newNode->data, current->data, type) > 0)
+        else if (compareData(newNode->data, current->data, type) > 0)
         {
-            if (current->right == NULL)
+            if (current->RIGHT == NULL)
             {
-                current->right = newNode;
+                current->RIGHT = newNode;
                 break;
             }
-            current = current->right;
+            current = current->RIGHT;
         }
         else
         {
@@ -51,24 +51,24 @@ void TreeAddNode(Tree *T, Node *newNode, DataType type)
     }
 }
 
-void TreeFreeNodes(Node *root, DataType type)
+void treeFreeNodes(Node *root, DataType type)
 {
     if (root == NULL) return;
 
     // Primeiro libera os filhos (recursivamente)
-    TreeFreeNodes(root->left, type);
-    TreeFreeNodes(root->right, type);
+    treeFreeNodes(root->LEFT, type);
+    treeFreeNodes(root->RIGHT, type);
 
     // Libera os dados armazenados no nó
-    FreePointer(root->data);
+    freePointer(root->data);
 
     // Libera o próprio nó
-    NodeFree(root);
+    nodeFree(root);
 }
 
-void TreeFree(Tree *T)
+void treeFree(Tree *T)
 {
     if (T == NULL) return;
-    TreeFreeNodes(T->root, TreeType(T)); // Libera os nós da árvore
+    treeFreeNodes(T->root, TREE_TYPE(T)); // Libera os nós da árvore
     free(T); // Libera a árvore
 }

@@ -20,11 +20,11 @@ int main()
 {
     Stack *pilha = StackInit(LINEAR_STACK, SIMPLY_LINKED);
 
-    StackPush(pilha, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 1)));
-    StackPush(pilha, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 2)));
-    StackPush(pilha, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 3)));
-    StackPush(pilha, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 4)));
-    StackPush(pilha, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 5)));
+    StackPush(pilha, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_INT, 1)));
+    StackPush(pilha, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_INT, 2)));
+    StackPush(pilha, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_INT, 3)));
+    StackPush(pilha, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_INT, 4)));
+    StackPush(pilha, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_INT, 5)));
 
     print_stack(pilha); // saída: 1 -> 2 -> 3 -> 4 -> 5
 

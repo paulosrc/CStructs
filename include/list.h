@@ -3,18 +3,18 @@
 
 #include "node.h"
 
-#define next links[0]
-#define prev links[1]
+#define NEXT links[0]
+#define PREV links[1]
 
-#define ListFront(L)    L->head->next
-#define ListBack(L)     L->tail->prev
-#define ListNext(N)     N->next
-#define ListPrev(N)     N->prev
-#define ListData(N)     N->data
-#define ListType(L)     L->type
-#define ListHead(L)     L->head
-#define ListTail(L)     L->tail
-#define ListEmpty(L)    (L->head->next == L->tail)
+#define LIST_FRONT(L)     L->head->NEXT
+#define LIST_BACK(L)      L->tail->PREV
+#define LIST_NEXT(N)      N->NEXT
+#define LIST_PREV(N)      N->PREV
+#define LIST_DATA(N)      N->data
+#define LIST_TYPE(L)      L->type
+#define LIST_HEAD(L)      L->head
+#define LIST_TAIL(L)      L->tail
+#define LIST_IS_EMPTY(L) (L->head->NEXT == L->tail)
 
 typedef enum 
 {
@@ -29,12 +29,12 @@ typedef struct
     ListType type;
 } List;
 
-List*   ListInit(ListType Ltype, NodeType Ntype);
-void    ListAddNode(List *L, Node *newNode);
-void    ListInsertNode(List *L, Node *newNode, size_t index);
-Node*   ListRemoveNode(List *L, size_t index);
-Node*   ListFetchNode(List *L, size_t index);
-void    ListFree(List *L);
-size_t  ListSize(List *L);
+List*   listInit(ListType Ltype, NodeType Ntype);
+void    listAddNode(List *L, Node *newNode);
+void    listInsertNode(List *L, Node *newNode, size_t index);
+Node*   listRemoveNode(List *L, size_t index);
+Node*   listFetchNode(List *L, size_t index);
+void    listFree(List *L);
+size_t  listSize(List *L);
 
 #endif

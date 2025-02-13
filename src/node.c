@@ -2,7 +2,7 @@
 #include <assert.h>
 #include "node.h"
 
-Node* NodeInit(NodeType type, Pointer newData)
+Node* nodeInit(NodeType type, Pointer newData)
 {
     Node* newNode = (Node*)malloc(sizeof(Node));
     assert(newNode != NULL); // Erro de alocação de memória
@@ -18,15 +18,15 @@ Node* NodeInit(NodeType type, Pointer newData)
     return newNode;
 }
 
-void NodeFree(Node* node)
+void nodeFree(Node* node)
 {
     if (node == NULL) return;                       // Caso node seja NULL
 
-    FreePointer(node->data);                        // Libera memória 
+    freePointer(node->data);                        // Libera memória 
     if (node->links != NULL)
     {
         for (int i = 0; i < node->linkCount; i++)
-            NodeFree((Node*)node->links[i]);        // Chama NodeFree recursivamente se necessário
+            nodeFree((Node*)node->links[i]);        // Chama nodeFree recursivamente se necessário
         free(node->links);                          // Libera o array de links
     }
     

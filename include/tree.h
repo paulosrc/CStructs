@@ -3,11 +3,12 @@
 
 #include "node.h"
 
-#define left  links[0]
-#define right links[1]
+#define LEFT  links[0]
+#define RIGHT links[1]
 
-#define TreeRoot(T) T->root
-#define TreeType(T) T->type
+#define TREE_ROOT(T) T->root
+#define TREE_TYPE(T) T->type
+#define TREE_IS_EMPTY(T) (T->root == NULL)
 typedef enum
 {
     BINARY_TREE,        // Árvore de busca binária
@@ -22,9 +23,9 @@ typedef struct tree
     TreeType type;
 } Tree;
 
-Tree* TreeInit(TreeType Ttype, NodeType Ntype, DataType Dtype); // Inicializa árvore vazia
-void TreeAddNode(Tree *T, Node *newNode, DataType type);        // Adiciona nó à árvore
-void TreeFreeNodes(Node *root, DataType type);                  // Libera memória alocada para nós da árvore
-void TreeFree(Tree *T);                                         // Libera memória alocada para a árvore
+Tree* treeInit(TreeType Ttype, NodeType Ntype, DataType Dtype); // Inicializa árvore vazia
+void treeAddNode(Tree *T, Node *newNode, DataType type);        // Adiciona nó à árvore
+void treeFreeNodes(Node *root, DataType type);                  // Libera memória alocada para nós da árvore
+void treeFree(Tree *T);                                         // Libera memória alocada para a árvore
 
 #endif

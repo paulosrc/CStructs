@@ -1,39 +1,39 @@
 #include "../include/queue.h"
 
-void print_queue(Queue *fila)
+void printQueue(Queue *fila)
 {
-    Node *aux = QueueFront(fila);
+    Node *aux = QUEUE_FRONT(fila);
     while (aux != NULL)
     {
         printf("%d ", aux->data);
-        if (aux == QueueBack(fila))
+        if (aux ==  QUEUE_BACK(fila))
         {
             break;
         }
         printf("-> ");
-        aux = aux->next;
+        aux = aux->NEXT;
     }
     printf("\n");
 }
 
 int main()
 {
-    Queue *fila = QueueInit(LINEAR_QUEUE, SIMPLY_LINKED);
+    Queue *fila = QUEUE_INIT(LINEAR_QUEUE, SIMPLY_LINKED);
     
-    QueueEnqueue(fila, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 1)));
-    QueueEnqueue(fila, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 2)));
-    QueueEnqueue(fila, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 3)));
-    QueueEnqueue(fila, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 4)));
-    QueueEnqueue(fila, NodeInit(SIMPLY_LINKED, DataToPointer(TYPE_INT, 5)));
+    QUEUE_ENQUEUE(fila, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_INT, 1)));
+    QUEUE_ENQUEUE(fila, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_INT, 2)));
+    QUEUE_ENQUEUE(fila, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_INT, 3)));
+    QUEUE_ENQUEUE(fila, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_INT, 4)));
+    QUEUE_ENQUEUE(fila, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_INT, 5)));
     
-    print_queue(fila);
+    printQueue(fila);
 
-    Node *no = QueueDequeue(fila);
+    Node *no = QUEUE_DEQUEUE(fila);
     printf("Elemento removido: %d\n", no->data);
     free(no);
 
-    print_queue(fila);
+    printQueue(fila);
 
-    QueueFree(fila);
+    QUEUE_FREE(fila);
     return 0;
 }

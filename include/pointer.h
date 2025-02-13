@@ -20,15 +20,15 @@ typedef enum
     TYPE_STRING
 } DataType;
 
-Pointer DataToPointer(DataType type, ...);
-void FreePointer(Pointer data);
+Pointer dataToPointer(DataType type, ...);
+void freePointer(Pointer data);
 
-int PointerToInt(Pointer data);
-float PointerToFloat(Pointer data);
-double PointerToDouble(Pointer data);
-char PointerToChar(Pointer data);
-String PointerToString(Pointer data);
+int pointerToInt(Pointer data);
+float pointerToFloat(Pointer data);
+double pointerToDouble(Pointer data);
+char pointerToChar(Pointer data);
+String pointerToString(Pointer data);
 
-int CompareData(Pointer data1, Pointer data2, DataType type);
+int compareData(Pointer data1, Pointer data2, DataType type);
 
 #endif

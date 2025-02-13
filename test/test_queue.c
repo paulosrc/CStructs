@@ -26,13 +26,13 @@ int main()
     QUEUE_ENQUEUE(fila, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_INT, 4)));
     QUEUE_ENQUEUE(fila, nodeInit(SIMPLY_LINKED, dataToPointer(TYPE_INT, 5)));
     
-    printQueue(fila);
+    printQueue(fila);   // saída: 1 -> 2 -> 3 -> 4 -> 5
 
     Node *no = QUEUE_DEQUEUE(fila);
-    printf("Elemento removido: %d\n", no->data);
-    free(no);
+    printf("Elemento removido: %d\n", no->data); // Primeiro elemento a sair é: 1
+    nodeFree(no);
 
-    printQueue(fila);
+    printQueue(fila);   // saída: 2 -> 3 -> 4 -> 5
 
     QUEUE_FREE(fila);
     return 0;

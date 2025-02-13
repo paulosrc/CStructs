@@ -11,7 +11,7 @@ void print_stack(Stack *pilha)
             break;
         }
         printf("-> ");
-        aux = aux->prev;
+        aux = aux->PREV;
     }
     printf("\n");
 }

@@ -11,8 +11,8 @@ typedef List Stack; // Pilha é uma lista
 #define STACK_FREE(L)            ListFree(L)
 #define STACK_SIZE(L)            ListSize(L)
 
-#define STACK_TOP(L)             LIST_BACK(L)
 #define STACK_BOTTOM(L)          LIST_FRONT(L)
+#define STACK_TOP(L)             LIST_BACK(L)
 #define STACK_NEXT(N)            LIST_NEXT(N)
 #define STACK_PREV(N)            LIST_PREV(N)
 #define STACK_DATA(N)            LIST_DATA(N)

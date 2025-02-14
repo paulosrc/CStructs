@@ -13,41 +13,64 @@ Tree* treeInit(TreeType Ttype, NodeType Ntype, DataType Dtype)
     return T;
 }
 
-void treeAddNode(Tree *T, Node *newNode, DataType type)
+void binTreeAddNode(Node *root, Node *newNode, DataType type)
 {
-    if (T->root == NULL)
+    if (newNode == NULL) return;
+    if (root == NULL) root = newNode; // Se a árvore estiver vazia, o novo nó é a raiz
+
+    if (compareData(newNode->data, root->data, type) < 0)
     {
-        T->root = newNode;
+        if (root->LEFT == NULL) root->LEFT = newNode;
+        else binTreeAddNode(root->LEFT, newNode, type);
+    }
+    else if (compareData(newNode->data, root->data, type) > 0)
+    {
+        if (root->RIGHT == NULL) root->RIGHT = newNode;
+        else binTreeAddNode(root->RIGHT, newNode, type);
+    }
+    else
+    {
+        // Árvore Binária não acomoda chaves duplicadas
         return;
     }
+}
+
+void avlTreeAddNode(Node *root, Node *newNode, DataType type)
+{
+
+}
+
+void rbTreeAddNode(Node *root, Node *newNode, DataType type)
+{
+
+}
+
+void treeAddNode(Tree *T, Node *newNode, DataType type)
+{
+    if (newNode == NULL) return;
+    if (T == NULL) T->root = newNode; // Se a árvore estiver vazia, o novo nó é a raiz
 
     Node *current = T->root;
-    
-    while (1)
+
+    if (T->type == BINARY_TREE)
     {
-        if (compareData(newNode->data, current->data, type) < 0)
-        {
-            if (current->LEFT == NULL)
-            {
-                current->LEFT = newNode;
-                break;
-            }
-            current = current->LEFT;
-        }
-        else if (compareData(newNode->data, current->data, type) > 0)
-        {
-            if (current->RIGHT == NULL)
-            {
-                current->RIGHT = newNode;
-                break;
-            }
-            current = current->RIGHT;
-        }
-        else
-        {
-            // Nó já está presente na árvore
-            break;
-        }
+        // Implementar adição de nó para árvore de busca binária
+        // https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+    }
+    else if (T->type == AVL_TREE)
+    {
+        // Implementar adição de nó para árvore AVL
+        // https://www.geeksforgeeks.org/avl-tree-set-1-insertion/
+    }
+    else if (T->type == RED_BLACK_TREE)
+    {
+        // Implementar adição de nó para árvore rubro-negra
+        // https://www.geeksforgeeks.org/red-black-tree-set-1-introduction-2/
+    }
+    else
+    {
+        // Tipo de árvore não suportado
+        return;
     }
 }
 

@@ -27,5 +27,8 @@ Tree* treeInit(TreeType Ttype, NodeType Ntype, DataType Dtype); // Inicializa á
 void treeAddNode(Tree *T, Node *newNode, DataType type);        // Adiciona nó à árvore
 void treeFreeNodes(Node *root, DataType type);                  // Libera memória alocada para nós da árvore
 void treeFree(Tree *T);                                         // Libera memória alocada para a árvore
+void binTreeAddNode(Node *root, Node *newNode, DataType type);  // Adiciona nó à árvore de busca binária
+void avlTreeAddNode(Node *root, Node *newNode, DataType type);  // Adiciona nó à árvore AVL
+void rbTreeAddNode(Node *root, Node *newNode, DataType type);   // Adiciona nó à árvore rubro-negra
 
 #endif
